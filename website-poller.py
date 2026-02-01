@@ -26,6 +26,7 @@ def main():
     print("\n---------------------------------------------------------------")
     url = input("Enter full URL: ")
     wait_base = int(input("Enter polling interval time (in seconds): "))
+    wait_max_jitter = wait_base*JITTER_FACTOR
 
     print("Starting website monitor. Press Ctrl+C to quit.\n")
 
@@ -36,11 +37,9 @@ def main():
         else:
             print(f"Website title: {title}")
 
-        wait_max_jitter = wait_base*JITTER_FACTOR
-        wait_total = wait_base + uniform(-wait_max_jitter, wait_max_jitter)
-
-        print(f"Polling again in {wait_total:.3f} seconds...\n")
-        sleep(wait_total)
+        wait = wait_base + uniform(-wait_max_jitter, wait_max_jitter)
+        print(f"Polling again in {wait:.3f} seconds...\n")
+        sleep(wait)
 
 if __name__ == "__main__":
     main()
