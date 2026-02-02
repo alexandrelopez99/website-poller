@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from requests import get, RequestException
 
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
-TIMEOUT = 10
+TIMEOUT = 3
 JITTER_FACTOR = 0.1
 
 def check_site_title(url):
